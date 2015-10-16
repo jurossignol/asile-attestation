@@ -1,0 +1,24 @@
+{
+  "name": "asile-attestation",
+  "version": "0.0.0",
+  "authors": [
+    "JulienRossignol <ju.rossignol@gmail.com>"
+  ],
+  "main": "index.html",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "~3.3.5",
+    "jquery": "~2.1.4",
+    "jquery-ui": "~1.11.4",
+    "jspdf": "~1.1.135",
+    "moment": "~2.10.6",
+    "picEdit": "*"
+  }
+}
