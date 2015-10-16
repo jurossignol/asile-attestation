@@ -54,6 +54,50 @@ $(".mineur").change(function() {
     }
 });
 
+$("#field_type").change(function() {
+	calculateValidityDate();
+});
+$("#field_status").change(function() {
+	calculateValidityDate();
+});
+$("#field_deliveryDate").change(function() {
+	calculateValidityDate();
+});
+
+function calculateValidityDate(){
+	var type = $("#field_type").val();
+	var status = $("#field_status").val();
+	var date = moment($("#field_deliveryDate").val(), 'YYYY-MM-DD');
+	
+	if(type === '' || status === '' || !date.isValid()) {
+		$("#field_validityDate").val(null);
+		return;
+	}
+	
+	if(status === 'Première délivrance'){
+		date.add(1, 'M');
+	} else if(status === 'Premier renouvellement') {
+		if(type === 'Dublin'){
+			date.add(4, 'M');
+		} else if(type === 'Normale'){
+			date.add(9, 'M');
+		} else if(type === 'Accélérée'){
+			date.add(6, 'M');
+		}
+	} else if(status === 'Deuxième renouvellement') {
+		if(type === 'Dublin'){
+			date.add(4, 'M');
+		} else if(type === 'Normale'){
+			date.add(6, 'M');
+		} else if(type === 'Accélérée'){
+			date.add(3, 'M');
+		}
+	}
+	date.subtract(1, 'd');
+
+	$("#field_validityDate").val(moment(date).format("YYYY-MM-DD"));
+}
+
 function generatePdf() {
 	var pdf = new jsPDF('p', 'cm', 'a4');
 	pdf.setFillColor(0);
@@ -97,39 +141,11 @@ function generatePdf() {
 
 	pdf.text("Délivrée par : " + $("#field_deliveryBy").val(), 2, 24.7);
 	pdf.text("Le : " + moment($("#field_deliveryDate").val()).format("DD/MM/YYYY"), 2, 25.4);
-	pdf.text("Valable jusqu'au : " + getEndDate().format("DD/MM/YYYY"), 2, 26.1);
+	pdf.text("Valable jusqu'au : " + moment($("#field_validityDate").val()).format("DD/MM/YYYY"), 2, 26.1);
 	pdf.text("Date de premier enregistrement en guichet unique : " + moment($("#field_firstDeliveryDate").val()).format("DD/MM/YYYY"), 2, 26.8);
 	pdf.text("Statut : " + $("#field_status").val(), 2, 27.5);
 	
 	pdf.save('attestation_' + $("#field_id").val() + '.pdf');
-}
-
-function getEndDate(){
-	var type = $("#field_type").val();
-	var status = $("#field_status").val();
-	var date = moment($("#field_deliveryDate").val());
-	
-	if(status === 'Première délivrance'){
-		date.add(1, 'M');
-	} else if(status === 'Premier renouvellement') {
-		if(type === 'Dublin'){
-			date.add(4, 'M');
-		} else if(type === 'Normale'){
-			date.add(9, 'M');
-		} else if(type === 'Accélérée'){
-			date.add(6, 'M');
-		}
-	} else if(status === 'Deuxième renouvellement') {
-		if(type === 'Dublin'){
-			date.add(4, 'M');
-		} else if(type === 'Normale'){
-			date.add(6, 'M');
-		} else if(type === 'Accélérée'){
-			date.add(3, 'M');
-		}
-	}
-	date.subtract(1, 'd');
-	return date;
 }
 
 /** TEMPORAIRE **/
@@ -150,7 +166,7 @@ $("#field_type").change(function(){
 	$("#field_addressCity").val("75012 Paris");
 	$("#field_addressComplement").val("Bâtiment 1");
 	$("#field_deliveryBy").val("93 Prefecture de Seine-Saint-Denis");
-	$("#field_deliveryDate").val(moment("2015-09-16").format("YYYY-MM-DD"));
+	$("#field_deliveryDate").val(moment("2015-09-16").format("YYYY-MM-DD")).trigger('change');
 	$("#field_firstDeliveryDate").val(moment("2015-09-16").format("YYYY-MM-DD"));
-	$("#field_status").val("Première délivrance");
+	$("#field_status").val("Première délivrance").trigger('change');
 });
