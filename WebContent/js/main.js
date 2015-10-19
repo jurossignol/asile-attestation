@@ -1,16 +1,14 @@
 'use strict';
 
-var photoLink = document.createElement('a');
-
 $.getJSON( "conf/config.json", {_: moment().valueOf()})
 	.done(function( data ) {
 		if(data.modeFormulaireComplet) {
 			initForm();
 		} else {
 			$('#title-photo').show();
-			$('.infoBox').append("<br><br>Merci de sélectionner le répertoire suivant lors du téléchargement : " + data.photo.repertoire);
+			$('#form-photo').show();
+			$('.infoBox').append("<br><br>Merci d'enregistrer l'image dans le répertoire suivant : " + data.repertoirePhoto);
 			$('#bloc-form').remove();
-			photoLink.download = data.photo.nom;
 		}
 	})
 	.fail(function( jqxhr, textStatus, error ) {
@@ -61,8 +59,14 @@ $('#btnImgCancel').on('click', function(){
 });
 
 $('#btnImgSave').on('click', function(){
-    photoLink.href = $("#theimg").attr("src");
-    photoLink.click();
+	if($("#field_agdrefId").val() === ''){
+		alert("Merci de préciser un numéro d'étranger AGDREF");
+	} else {
+		var photoLink = document.createElement('a');
+		photoLink.href = $("#theimg").attr("src");
+		photoLink.download = $("#field_agdrefId").val() + ".jpeg";
+		photoLink.click();
+	}
 });
 
 $('#btnZoomIn').on('click', function(){
