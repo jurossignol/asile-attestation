@@ -81,3 +81,7 @@
 .finalImageBox {
 	position: relative;
 }
+
+.infoBox {
+	font-style: italic;
+}

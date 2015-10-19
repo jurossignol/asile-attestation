@@ -1,6 +1,7 @@
 {
 	"modeFormulaireComplet": false,
 	"photo": {
-		"nom": "photo.png"
+		"nom": "photo.png",
+		"repertoire": "C:\\le\\repertoire\\cible"
 	}
 }

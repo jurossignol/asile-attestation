@@ -1,3 +1,5 @@
+'use strict';
+
 var photoLink = document.createElement('a');
 
 $.getJSON( "conf/config.json", {_: moment().valueOf()})
@@ -6,6 +8,7 @@ $.getJSON( "conf/config.json", {_: moment().valueOf()})
 			initForm();
 		} else {
 			$('#title-photo').show();
+			$('.infoBox').append("<br><br>Merci de sélectionner le répertoire suivant lors du téléchargement : " + data.photo.repertoire);
 			$('#bloc-form').remove();
 			photoLink.download = data.photo.nom;
 		}
@@ -15,61 +18,59 @@ $.getJSON( "conf/config.json", {_: moment().valueOf()})
 		console.log( "Request Failed: " + err );
 	});
 
+var cropCtx = { 
+	cropper: null,
+	cropperOptions: {
+		thumbBox: '.thumbBox',
+		spinner: '.spinner'
+	}
+};
 
 $('#thefile').picEdit({
 	imageUpdated: function(img) {
 		$('.picedit_box').addClass("hidden");
-
-		var options =
-        {
-            thumbBox: '.thumbBox',
-            spinner: '.spinner',
-            imgSrc: img.src
-        }
-        var cropper = $('.imageBox').cropbox(options);
-		
-        $('#btnCrop').on('click', function(){
-            $("#theimg").attr("src", cropper.getDataURL());
-			$('.finalImageBox').removeClass("hidden");
-            $('.imageBox').addClass("hidden");
-			$('#bloc-btn-photo').removeClass("hidden");
-        });
-        
-        $('#btnCancel').on('click', function(){
-        	$('#thefile').val(null);
-            $('.imageBox').css("background", "");
-            $('.picedit_canvas canvas').removeAttr("width");
-            $('.picedit_canvas canvas').removeAttr("height");
-            $('.picedit_box').css("width", "");
-            $('.picedit_box').css("height", "");
-            $('.picedit_action_btns').addClass("active");
-			$('.finalImageBox').addClass("hidden");
-			$('.imageBox').addClass("hidden");
-            $('.picedit_box').removeClass("hidden");
-        });
-        
-        $('#btnImgSave').on('click', function(){
-	        photoLink.href = $("#theimg").attr("src");
-	        photoLink.click();
-        });
-        
-        $('#btnImgCancel').on('click', function(){
-        	$("#theimg").attr("src", '');
-			$('.finalImageBox').addClass("hidden");
-			$('.imageBox').removeClass("hidden");
-			$('#bloc-btn-photo').addClass("hidden");
-        });
-        
-        $('#btnZoomIn').on('click', function(){
-            cropper.zoomIn();
-        });
-        
-        $('#btnZoomOut').on('click', function(){
-            cropper.zoomOut();
-        });
-		
 		$('.imageBox').removeClass("hidden");
+		cropCtx.cropperOptions.imgSrc = img.src;
+		cropCtx.cropper = $('.imageBox').cropbox(cropCtx.cropperOptions);
 	}
+});
+
+$('#btnCancel').on('click', function(){
+	$('#thefile').val(null);
+	$('.picedit_action_btns').addClass("active");
+    $('.picedit_canvas canvas').remove();
+    $('.picedit_box').css("width", "");
+    $('.picedit_box').css("height", "");
+    $('.picedit_box').removeClass("hidden");
+    $('.imageBox').css("background", "");
+	$('.imageBox').addClass("hidden");
+});
+
+$('#btnCrop').on('click', function(){
+    $("#theimg").attr("src", cropCtx.cropper.getDataURL());
+	$('.finalImageBox').removeClass("hidden");
+	$('.infoBox').removeClass("hidden");
+    $('.imageBox').addClass("hidden");
+});
+
+$('#btnImgCancel').on('click', function(){
+	$("#theimg").attr("src", '');
+	$('.finalImageBox').addClass("hidden");
+	$('.infoBox').addClass("hidden");
+	$('.imageBox').removeClass("hidden");
+});
+
+$('#btnImgSave').on('click', function(){
+    photoLink.href = $("#theimg").attr("src");
+    photoLink.click();
+});
+
+$('#btnZoomIn').on('click', function(){
+	cropCtx.cropper.zoomIn();
+});
+
+$('#btnZoomOut').on('click', function(){
+	cropCtx.cropper.zoomOut();
 });
 
 
