@@ -23,7 +23,8 @@
         <![endif]-->
         <nav class="navbar navbar-default">
         	<div class="container" style="text-align: center">
-        		<h3>Formulaire de génération d'attestation de demande d'Asile</h3>
+        		<h3 id="title-photo" style="display: none;">Outil de retouche photo</h3>
+        		<h3 id="title-form" style="display: none;">Formulaire de génération d'attestation de demande d'Asile</h3>
         	</div>
         </nav>
         <div class="container">
@@ -31,30 +32,11 @@
             	<div class="row">
             		<div class="col-xs-8 col-xs-offset-2 col-sm-6 col-sm-offset-3">
             			<div class="row underline">
-            				<h4>Procédure</h4>
+            				<h4>Photo</h4>
             			</div>
             			<br>
-		            	<div class="row row-form">
-	            			<div class="form-group">
-						        <label for="field_type">Type de procédure</label>
-						        <select class="form-control" name="type" id="field_type" >
-						        	<option label=" "></option>
-						        	<option value="Dublin">Dublin</option>
-						        	<option value="Normale">Normale</option>
-						        	<option value="Accélérée">Accélérée</option>
-						        </select>
-						    </div>
-						</div>
-		            	<br>
-		            	<div class="row underline">
-            				<h4>Identité</h4>
-            			</div>
-		            	<br>
             			<div class="row row-form">
-	            				<label>Photo</label>
-	            		</div>
-            			<div class="row row-form">
-	            			<div class="form-group">
+	            			<div class="form-group" style="text-align: center">
 	            				<input type="file" name="thefile" id="thefile" class="cropit-image-input hidden">
 								<div class="imageBox hidden">
 							        <div class="thumbBox"></div>
@@ -66,137 +48,178 @@
 								        <span id="btnZoomOut" class="picedit_control picedit_action glyphicon glyphicon-zoom-out"></span>
 							        </div>
 							    </div>
-							    <div class="finalImageBox">
-									<img id="theimg" src="" class="hidden" />
-									<div id="theimgbtn" class="picedit_video_controls final_image_controls hidden">
+							    <div class="finalImageBox hidden">
+									<img id="theimg" src="" />
+									<div id="theimgbtn" class="picedit_video_controls final_image_controls">
+										<span id="btnImgSave" class="picedit_control picedit_action glyphicon glyphicon-save"></span>
 										<span id="btnImgCancel" class="picedit_control picedit_action ico-picedit-close"></span>
 								    </div>
 							    </div>
 	            			</div>
 		            	</div>
-		            	<div class="row row-form">
-	            			<div class="form-group">
-						        <label for="field_id">Identifiant</label>
-						        <input type="text" class="form-control" name="lastId" id="field_id">
-						    </div>
-	            			<div class="form-group">
-						        <label for="field_lastName">Nom</label>
-						        <input type="text" class="form-control" name="lastName" id="field_lastName">
-						    </div>
-						    <div class="form-group">
-						        <label for="field_usedLastName">Nom d'usage</label>
-						        <input type="text" class="form-control" name="usedLastName" id="field_usedLastName">
-						    </div>
-						    <div class="form-group">
-						        <label for="field_firstName">Prénom(s)</label>
-						        <input type="text" class="form-control" name="firstName" id="field_firstName">
-						    </div>
-						    <div class="form-group">
-						        <label for="field_sex">Sexe</label>
-						        <div>
-							        <label class="radio-inline"><input type="radio" name="sex" id="field_sex_f" value="Féminin">Féminin</label>
-									<label class="radio-inline"><input type="radio" name="sex" id="field_sex_m" value="Masculin">Masculin</label>
-				                </div>
-						    </div>
-						    <div class="form-group">
-						        <label for="field_situation">Situation familiale</label>
-						        <select class="form-control" name="situation" id="field_situation" >
-						        	<option label=" "></option>
-						        	<option value="Célibataire">Célibataire</option>
-						        	<option value="Concubin(e)">Concubin(e)</option>
-						        	<option value="Pacsé(e)">Pacsé(e)</option>
-						        	<option value="Marié(e)">Marié(e)</option>
-						        	<option value="Séparé(e)">Séparé(e)</option>
-						        	<option value="Divorcé(e)">Divorcé(e)</option>
-						        	<option value="Veuf(ve)">Veuf(ve)</option>
-						        </select>
-						    </div>
-						    <div class="form-group">
-						        <label for="field_birthDate">Date de naissace</label>
-						        <input type="date" class="form-control" name="birthDate" id="field_birthDate">
-						    </div>
-						    <div class="form-group">
-						        <label for="field_birthCity">Ville de naissance</label>
-						        <input type="text" class="form-control" name="birthCity" id="field_birthCity">
-						    </div>
-						    <div class="form-group">
-						        <label for="field_birthCountry">Pays de naissance</label>
-						        <select class="form-control" name="birthCountry" id="field_birthCountry">
-							    	<option label=" "></option><option value="AF">Afghanistan</option><option value="ZA">Afrique du Sud</option><option value="AL">Albanie</option><option value="DZ">Algérie</option><option value="DE">Allemagne</option><option value="AD">Andorre</option><option value="AO">Angola</option><option value="AI">Anguilla</option><option value="AQ">Antarctique</option><option value="AG">Antigua-et-Barbuda</option><option value="AN">Antilles néerlandaises</option><option value="SA">Arabie saoudite</option><option value="AR">Argentine</option><option value="AM">Arménie</option><option value="AW">Aruba</option><option value="AU">Australie</option><option value="AT">Autriche</option><option value="AZ">Azerbaïdjan</option><option value="BS">Bahamas</option><option value="BH">Bahreïn</option><option value="BD">Bangladesh</option><option value="BB">Barbade</option><option value="BE">Belgique</option><option value="BZ">Belize</option><option value="BM">Bermudes</option><option value="BT">Bhoutan</option><option value="BO">Bolivie</option><option value="BA">Bosnie-Herzégovine</option><option value="BW">Botswana</option><option value="BN">Brunéi Darussalam</option><option value="BR">Brésil</option><option value="BG">Bulgarie</option><option value="BF">Burkina Faso</option><option value="BI">Burundi</option><option value="BY">Bélarus</option><option value="BJ">Bénin</option><option value="KH">Cambodge</option><option value="CM">Cameroun</option><option value="CA">Canada</option><option value="CV">Cap-Vert</option><option value="CL">Chili</option><option value="CN">Chine</option><option value="CY">Chypre</option><option value="CO">Colombie</option><option value="KM">Comores</option><option value="CG">Congo</option><option value="KP">Corée du Nord</option><option value="KR">Corée du Sud</option><option value="CR">Costa Rica</option><option value="HR">Croatie</option><option value="CU">Cuba</option><option value="CI">Côte d’Ivoire</option><option value="DK">Danemark</option><option value="DJ">Djibouti</option><option value="DM">Dominique</option><option value="EG">Egypte</option><option value="SV">El Salvador</option><option value="AE">Emirats arabes unis</option><option value="EC">Equateur</option><option value="ER">Erythrée</option><option value="ES">Espagne</option><option value="EE">Estonie</option><option value="VA">Etat de la Cité du Vatican</option><option value="FM">Etats fédérés de Micronésie</option><option value="US">Etats-Unis</option><option value="ET">Ethiopie</option><option value="FJ">Fidji</option><option value="FI">Finlande</option><option value="FR">France</option><option value="GA">Gabon</option><option value="GM">Gambie</option><option value="GH">Ghana</option><option value="GI">Gibraltar</option><option value="GD">Grenade</option><option value="GL">Groenland</option><option value="GR">Grèce</option><option value="GP">Guadeloupe</option><option value="GU">Guam</option><option value="GT">Guatemala</option><option value="GG">Guernesey</option><option value="GN">Guinée</option><option value="GQ">Guinée équatoriale</option><option value="GW">Guinée-Bissau</option><option value="GY">Guyana</option><option value="GF">Guyane française</option><option value="GE">Géorgie</option><option value="GS">Géorgie du Sud et les îles Sandwich du Sud</option><option value="HT">Haïti</option><option value="HN">Honduras</option><option value="HU">Hongrie</option><option value="BV">Ile Bouvet</option><option value="CX">Ile Christmas</option><option value="NF">Ile Norfolk</option><option value="IM">Ile de Man</option><option value="AX">Iles Åland</option><option value="KY">Iles Caïmans</option><option value="CC">Iles Cocos - Keeling</option><option value="CK">Iles Cook</option><option value="FO">Iles Féroé</option><option value="HM">Iles Heard et MacDonald</option><option value="FK">Iles Malouines</option><option value="MP">Iles Mariannes du Nord</option><option value="MH">Iles Marshall</option><option value="UM">Iles Mineures Éloignées des États-Unis</option><option value="SB">Iles Salomon</option><option value="TC">Iles Turks et Caïques</option><option value="VG">Iles Vierges britanniques</option><option value="VI">Iles Vierges des États-Unis</option><option value="IN">Inde</option><option value="ID">Indonésie</option><option value="IQ">Irak</option><option value="IR">Iran</option><option value="IE">Irlande</option><option value="IS">Islande</option><option value="IL">Israël</option><option value="IT">Italie</option><option value="JM">Jamaïque</option><option value="JP">Japon</option><option value="JE">Jersey</option><option value="JO">Jordanie</option><option value="KZ">Kazakhstan</option><option value="KE">Kenya</option><option value="KG">Kirghizistan</option><option value="KI">Kiribati</option><option value="KW">Koweït</option><option value="LA">Laos</option><option value="LS">Lesotho</option><option value="LV">Lettonie</option><option value="LB">Liban</option><option value="LY">Libye</option><option value="LR">Libéria</option><option value="LI">Liechtenstein</option><option value="LT">Lituanie</option><option value="LU">Luxembourg</option><option value="MK">Macédoine</option><option value="MG">Madagascar</option><option value="MY">Malaisie</option><option value="MW">Malawi</option><option value="MV">Maldives</option><option value="ML">Mali</option><option value="MT">Malte</option><option value="MA">Maroc</option><option value="MQ">Martinique</option><option value="MU">Maurice</option><option value="MR">Mauritanie</option><option value="YT">Mayotte</option><option value="MX">Mexique</option><option value="MD">Moldavie</option><option value="MC">Monaco</option><option value="MN">Mongolie</option><option value="MS">Montserrat</option><option value="ME">Monténégro</option><option value="MZ">Mozambique</option><option value="MM">Myanmar</option><option value="NA">Namibie</option><option value="NR">Nauru</option><option value="NI">Nicaragua</option><option value="NE">Niger</option><option value="NG">Nigéria</option><option value="NU">Niue</option><option value="NO">Norvège</option><option value="NC">Nouvelle-Calédonie</option><option value="NZ">Nouvelle-Zélande</option><option value="NP">Népal</option><option value="OM">Oman</option><option value="UG">Ouganda</option><option value="UZ">Ouzbékistan</option><option value="PK">Pakistan</option><option value="PW">Palaos</option><option value="PA">Panama</option><option value="PG">Papouasie-Nouvelle-Guinée</option><option value="PY">Paraguay</option><option value="NL">Pays-Bas</option><option value="PH">Philippines</option><option value="PN">Pitcairn</option><option value="PL">Pologne</option><option value="PF">Polynésie française</option><option value="PR">Porto Rico</option><option value="PT">Portugal</option><option value="PE">Pérou</option><option value="QA">Qatar</option><option value="HK">R.A.S. chinoise de Hong Kong</option><option value="MO">R.A.S. chinoise de Macao</option><option value="RO">Roumanie</option><option value="GB">Royaume-Uni</option><option value="RU">Russie</option><option value="RW">Rwanda</option><option value="CF">République centrafricaine</option><option value="DO">République dominicaine</option><option value="CD">République démocratique du Congo</option><option value="CZ">République tchèque</option><option value="RE">Réunion</option><option value="EH">Sahara occidental</option><option value="BL">Saint-Barthélémy</option><option value="KN">Saint-Kitts-et-Nevis</option><option value="SM">Saint-Marin</option><option value="MF">Saint-Martin</option><option value="PM">Saint-Pierre-et-Miquelon</option><option value="VC">Saint-Vincent-et-les Grenadines</option><option value="SH">Sainte-Hélène</option><option value="LC">Sainte-Lucie</option><option value="WS">Samoa</option><option value="AS">Samoa américaines</option><option value="ST">Sao Tomé-et-Principe</option><option value="RS">Serbie</option><option value="CS">Serbie-et-Monténégro</option><option value="SC">Seychelles</option><option value="SL">Sierra Leone</option><option value="SG">Singapour</option><option value="SK">Slovaquie</option><option value="SI">Slovénie</option><option value="SO">Somalie</option><option value="SD">Soudan</option><option value="LK">Sri Lanka</option><option value="CH">Suisse</option><option value="SR">Suriname</option><option value="SE">Suède</option><option value="SJ">Svalbard et Île Jan Mayen</option><option value="SZ">Swaziland</option><option value="SY">Syrie</option><option value="SN">Sénégal</option><option value="TJ">Tadjikistan</option><option value="TZ">Tanzanie</option><option value="TW">Taïwan</option><option value="TD">Tchad</option><option value="TF">Terres australes françaises</option><option value="IO">Territoire britannique de l'océan Indien</option><option value="PS">Territoire palestinien</option><option value="TH">Thaïlande</option><option value="TL">Timor oriental</option><option value="TG">Togo</option><option value="TK">Tokelau</option><option value="TO">Tonga</option><option value="TT">Trinité-et-Tobago</option><option value="TN">Tunisie</option><option value="TM">Turkménistan</option><option value="TR">Turquie</option><option value="TV">Tuvalu</option><option value="UA">Ukraine</option><option value="UY">Uruguay</option><option value="VU">Vanuatu</option><option value="VE">Venezuela</option><option value="VN">Viêt Nam</option><option value="WF">Wallis-et-Futuna</option><option value="YE">Yémen</option><option value="ZM">Zambie</option><option value="ZW">Zimbabwe</option>
-							    </select>
-						    </div>
-						    
-						    <div class="form-group">
-						        <label for="field_mineur">Mineur</label>
-						        <div>
-							        <label class="radio-inline"><input type="radio" class="mineur" name="mineur" id="field_mineur_o" value="oui">oui</label>
-									<label class="radio-inline"><input type="radio" class="mineur" name="mineur" id="field_mineur_n" value="non">non</label>
-						        </div>
-						    </div>
-						    <div class="form-group" id="group-represent" style="display: none;">
-						        <label for="field_represent">Représentant légal</label>
-						        <input type="text" class="form-control" name="represent" id="field_represent">
-						    </div>
-						</div>
-						<br>
-		            	<div class="row underline">
-            				<h4>Adresse</h4>
-            			</div>
-		            	<br>
-		            	<div class="row row-form">
-						    <div class="form-group">
-						        <label for="field_addressOwner">Chez</label>
-						        <input type="text" class="form-control" name="addressOwner" id="field_addressOwner">
-						    </div>
-						    <div class="form-group">
-						        <label for="field_addressStreet">Numéro / Voie</label>
-						        <input type="text" class="form-control" name="addressStreet" id="field_addressStreet">
-						    </div>
-						    <div class="form-group">
-						        <label for="field_addressCity">Code postal / Ville</label>
-						        <input type="text" class="form-control" name=addressCity id="field_addressCity">
-						    </div>
-						    <div class="form-group">
-						        <label for="field_addressComplement">Complément</label>
-						        <input type="text" class="form-control" name="addressComplement" id="field_addressComplement">
-						    </div>
-						</div>
-						<br>
-		            	<div class="row underline">
-            				<h4>Délivrance</h4>
-            			</div>
-		            	<br>
-		            	<div class="row row-form">
-						    <div class="form-group">
-						        <label for="field_deliveryBy">Délivré par</label>
-						        <input type="text" class="form-control" name="deliveryBy" id="field_deliveryBy">
-						    </div>
-						    <div class="form-group">
-						        <label for="field_deliveryDate">Date de délivrance</label>
-						        <input type="date" class="form-control" name="deliveryDate" id="field_deliveryDate">
-						    </div>
-						    <div class="form-group">
-						        <label for="field_validityDate">Date de fin de validité</label>
-						        <input type="date" class="form-control" name="validityDate" id="field_validityDate" disabled="disabled">
-						    </div>
-						    <div class="form-group">
-						        <label for="field_firstDeliveryDate">Date de premier enregistrement en guichet unique</label>
-						        <input type="date" class="form-control" name="firstDeliveryDate" id="field_firstDeliveryDate">
-						    </div>
-						    <div class="form-group">
-						        <label for="field_status">Statut</label>
-						        <select class="form-control" name="status" id="field_status" >
-						        	<option label=" "></option>
-						        	<option value="Première délivrance">Première délivrance</option>
-						        	<option value="Premier renouvellement">Premier renouvellement</option>
-						        	<option value="Deuxième renouvellement">Deuxième renouvellement</option>
-						        </select>
-						    </div>
-						    <br>
-						    <div style="text-align: center;">
-						    	<button onclick="javascript:generatePdf()" class="btn btn-primary">Générer le PDF</button>
-						    </div>
-		            	</div>
+		            	<div id="bloc-form" style="display: none;">
+			            	<br>
+	            			<div class="row underline">
+	            				<h4>Procédure</h4>
+	            			</div>
+	            			<br>
+			            	<div class="row row-form">
+		            			<div class="form-group">
+							        <label for="field_type">Type de procédure</label>
+							        <select class="form-control" name="type" id="field_type" >
+							        	<option label=" "></option>
+							        	<option value="Dublin">Dublin</option>
+							        	<option value="Normale">Normale</option>
+							        	<option value="Accélérée">Accélérée</option>
+							        </select>
+							    </div>
+							</div>
+			            	<br>
+			            	<div class="row underline">
+	            				<h4>Identité</h4>
+	            			</div>
+			            	<br>
+			            	<div class="row row-form">
+		            			<div class="form-group">
+							        <label for="field_id">Identifiant</label>
+							        <input type="text" class="form-control" name="lastId" id="field_id">
+							    </div>
+		            			<div class="form-group">
+							        <label for="field_lastName">Nom</label>
+							        <input type="text" class="form-control" name="lastName" id="field_lastName">
+							    </div>
+							    <div class="form-group">
+							        <label for="field_usedLastName">Nom d'usage</label>
+							        <input type="text" class="form-control" name="usedLastName" id="field_usedLastName">
+							    </div>
+							    <div class="form-group">
+							        <label for="field_firstName">Prénom(s)</label>
+							        <input type="text" class="form-control" name="firstName" id="field_firstName">
+							    </div>
+							    <div class="form-group">
+							        <label for="field_sex">Sexe</label>
+							        <div>
+								        <label class="radio-inline"><input type="radio" name="sex" id="field_sex_f" value="Féminin">Féminin</label>
+										<label class="radio-inline"><input type="radio" name="sex" id="field_sex_m" value="Masculin">Masculin</label>
+					                </div>
+							    </div>
+							    <div class="form-group">
+							        <label for="field_situation">Situation familiale</label>
+							        <select class="form-control" name="situation" id="field_situation" >
+							        	<option label=" "></option>
+							        	<option value="Célibataire">Célibataire</option>
+							        	<option value="Concubin(e)">Concubin(e)</option>
+							        	<option value="Pacsé(e)">Pacsé(e)</option>
+							        	<option value="Marié(e)">Marié(e)</option>
+							        	<option value="Séparé(e)">Séparé(e)</option>
+							        	<option value="Divorcé(e)">Divorcé(e)</option>
+							        	<option value="Veuf(ve)">Veuf(ve)</option>
+							        </select>
+							    </div>
+							    <div class="form-group">
+							        <label for="field_birthDate">Date de naissace</label>
+							        <input type="date" class="form-control" name="birthDate" id="field_birthDate">
+							    </div>
+							    <div class="form-group">
+							        <label for="field_birthCity">Ville de naissance</label>
+							        <input type="text" class="form-control" name="birthCity" id="field_birthCity">
+							    </div>
+							    <div class="form-group">
+							        <label for="field_birthCountry">Pays de naissance</label>
+							        <select class="form-control" name="birthCountry" id="field_birthCountry">
+								    	<option label=" "></option><option value="ZZZ">INDETERMINE</option><option value="AFG">AFGHANISTAN</option><option value="ZA">AFRIQUE DU SUD</option><option value="AL">ALBANIE</option><option value="DZ">ALGERIE</option><option value="D">ALLEMAGNE</option><option value="ZDA">ALLEMAGNE</option><option value="RDA">ALLEMAGNE DE L'EST (RDA)</option><option value="AND">ANDORRE</option><option value="PAN">ANGOLA</option><option value="GBI">ANGUILLA</option><option value="ZAN">ANTIGUA ET BARBUDA</option><option value="NA">ANTILLES NEERLANDAISES</option><option value="APA">APATRIDE</option><option value="ARS">ARABIE SAOUDITE</option><option value="RA">ARGENTINE</option><option value="ZAR">ARMENIE</option><option value="ZAC">ASSYRO CHALDEE</option><option value="AUS">AUSTRALIE</option><option value="A">AUTRICHE</option><option value="AZE">AZERBAIDJAN</option><option value="BS">BAHAMAS</option><option value="BH">BAHREIN</option><option value="BD">BANGLADESH</option><option value="BDS">BARBADE</option><option value="B">BELGIQUE</option><option value="ZBE">BELIZE</option><option value="BGL">BENGALE</option><option value="DY">BENIN</option><option value="GBB">BERMUDES</option><option value="BOU">BHOUTAN</option><option value="ZBR">BIELORUSSIE</option><option value="BUR">BIRMANIE</option><option value="BUR">BIRMANIE</option><option value="BO">BOLIVIE</option><option value="BOS">BOSNIE-HERZEGOVINE</option><option value="BP">BOTSWANA</option><option value="BR">BRESIL</option><option value="BRU">BRUNEI</option><option value="BG">BULGARIE</option><option value="HV">BURKINA</option><option value="OUR">BURUNDI</option><option value="K">CAMBODGE</option><option value="TC">CAMEROUN</option><option value="CDN">CANADA</option><option value="CV">CAP VERT</option><option value="RCA">CENTRAFRIQUE</option><option value="ZCL">CEYLAN</option><option value="RCH">CHILI</option><option value="CY">CHYPRE</option><option value="CO">COLOMBIE</option><option value="KM">COMORES</option><option value="RCB">CONGO</option><option value="COR">COREE DU NORD</option><option value="SCO">COREE DU SUD</option><option value="CR">COSTA RICA</option><option value="CI">COTE D'IVOIRE</option><option value="CRO">CROATIE</option><option value="C">CUBA</option><option value="DK">DANEMARK</option><option value="DJ">DJIBOUTI</option><option value="ET">EGYPTE</option><option value="SAL">EL SALVADOR</option><option value="AE">EMIRATS ARABES UNIS</option><option value="EC">EQUATEUR</option><option value="ZRY">ERYTHREE</option><option value="E">ESPAGNE</option><option value="ZES">ESTONIE</option><option value="USA">ETATS UNIS</option><option value="ETH">ETHIOPIE</option><option value="FJ">FIDJI</option><option value="SF">FINLANDE</option><option value="F">FRANCE</option><option value="GA">GABON</option><option value="WAG">GAMBIE</option><option value="ZGE">GEORGIE</option><option value="GH">GHANA</option><option value="GBZ">GIBRALTAR</option><option value="GB">GRANDE BRETAGNE</option><option value="GR">GRECE</option><option value="WG">GRENADE</option><option value="DKG">GROENLAND</option><option value="GCA">GUATEMALA</option><option value="GBG">GUERNESEY</option><option value="GU">GUINEE</option><option value="GQ">GUINEE EQUATORIALE</option><option value="GW">GUINEE-BISSAO</option><option value="GY">GUYANA</option><option value="RH">HAITI</option><option value="HO">HONDURAS</option><option value="GBK">HONG KONG</option><option value="H">HONGRIE</option><option value="GBF">ILES MALOUINES</option><option value="MAR">ILES MARSHALL</option><option value="IND">INDE</option><option value="RI">INDONESIE</option><option value="IRQ">IRAK</option><option value="IR">IRAN</option><option value="EIR">IRLANDE</option><option value="IS">ISLANDE</option><option value="IL">ISRAEL</option><option value="I">ITALIE</option><option value="JA">JAMAIQUE</option><option value="J">JAPON</option><option value="GBJ">JERSEY</option><option value="JOR">JORDANIE</option><option value="KAZ">KAZAKHSTAN</option><option value="EAK">KENYA</option><option value="KIR">KIRGHIZIE</option><option value="ZKR">KIRIBATI</option><option value="KO">KOWEIT</option><option value="ZKU">KURDISTAN</option><option value="DM">LA DOMINIQUE</option><option value="LAO">LAOS</option><option value="PB">LESOTHO</option><option value="ZLE">LETTONIE</option><option value="LIB">LIBAN</option><option value="LBA">LIBERIA</option><option value="LT">LIBYE</option><option value="FL">LIECHTENSTEIN</option><option value="ZLI">LITUANIE</option><option value="L">LUXEMBOURG</option><option value="RM">MADAGASCAR</option><option value="PTM">MALAISIE</option><option value="NP">MALAWI</option><option value="MV">MALDIVES</option><option value="MLI">MALI</option><option value="GBY">MALTE</option><option value="GAM">MAN (ILE)</option><option value="MA">MAROC</option><option value="MS">MAURICE</option><option value="RIM">MAURITANIE</option><option value="MEX">MEXIQUE</option><option value="MIC">MICRONESIE</option><option value="MOL">MOLDAVIE</option><option value="MC">MONACO</option><option value="MN">MONGOLIE</option><option value="ME">MONTENEGRO</option><option value="PM">MOZAMBIQUE</option><option value="ZNA">NAMIBIE</option><option value="ZNU">NAURU</option><option value="NE">NEPAL</option><option value="NIC">NICARAGUA</option><option value="NIG">NIGER</option><option value="WAN">NIGERIA</option><option value="N">NORVEGE</option><option value="NZ">NOUVELLE ZELANDE</option><option value="OM">OMAN</option><option value="EAU">OUGANDA</option><option value="OUZ">OUZBEKISTAN</option><option value="PAK">PAKISTAN</option><option value="ZPA">PALESTINE</option><option value="PA">PANAMA</option><option value="PG">PAPOUASIE</option><option value="PAY">PARAGUAY</option><option value="NL">PAYS BAS</option><option value="PE">PEROU</option><option value="PI">PHILIPPINES</option><option value="PL">POLOGNE</option><option value="PR">PORTO RICO</option><option value="P">PORTUGAL</option><option value="Q">QATAR</option><option value="RMA">REPUBLIQUE DE MACEDOINE</option><option value="PLW">REPUBLIQUE DE PALAU</option><option value="RDC">REPUBLIQUE DEMO. DU CONGO</option><option value="DOM">REPUBLIQUE DOMINICAINE</option><option value="RKS">REPUBLIQUE DU KOSOVO</option><option value="RPC">REPUBLIQUE POPULAIRE DE CHINE</option><option value="RTC">REPUBLIQUE TCHEQUE</option><option value="R">ROUMANIE</option><option value="ZRU">RUSSIE</option><option value="RU">RWANDA</option><option value="SAH">SAHRAOUIE</option><option value="ZNV">SAINT CHRISTOPHE ET NIEVES</option><option value="RSM">SAINT MARIN</option><option value="ST">SAINT THOMAS ET PRINCE</option><option value="WV">SAINT VINCENT</option><option value="V">SAINT-SIEGE</option><option value="WL">SAINTE LUCIE</option><option value="SL">SALOMON</option><option value="WS">SAMOA OCCIDENTALES</option><option value="SA">SARRE</option><option value="SN">SENEGAL</option><option value="RS">SERBIE</option><option value="SB">SERBIE-ET-MONTENEGRO</option><option value="SKO">SERBIE-ET-MONTENEGRO/KOSOVO</option><option value="SY">SEYCHELLES</option><option value="WAL">SIERRA LEONE</option><option value="SGP">SINGAPOUR</option><option value="SVQ">SLOVAQUIE</option><option value="SLO">SLOVENIE</option><option value="SP">SOMALIE</option><option value="SAE">SOUDAN</option><option value="SSD">SOUDAN DU SUD</option><option value="CL">SRI LANKA</option><option value="ZCN">ST CHRISTOPHE ET NIEVES</option><option value="ZKI">ST KITTS</option><option value="S">SUEDE</option><option value="CH">SUISSE</option><option value="SME">SURINAME</option><option value="SD">SWAZILAND</option><option value="SYR">SYRIE</option><option value="TAD">TADJIKISTAN</option><option value="TW">TAIWAN</option><option value="EAT">TANZANIE</option><option value="TCH">TCHAD</option><option value="CS">TCHECOSLOVAQUIE</option><option value="T">THAILANDE</option><option value="ZTI">TIBET</option><option value="TMP">TIMOR ORIENTAL</option><option value="TT">TOGO</option><option value="TO">TONGA</option><option value="TD">TRINITE ET TOBAGO</option><option value="TU">TUNISIE</option><option value="TUR">TURKMENISTAN</option><option value="TR">TURQUIE</option><option value="ZTU">TUVALU</option><option value="ZUK">UKRAINE</option><option value="SU">URSS</option><option value="U">URUGUAY</option><option value="ZVA">VANUATU</option><option value="YV">VENEZUELA</option><option value="VN">VIETNAM</option><option value="YEM">YEMEN</option><option value="Y">YEMEN (NORD)</option><option value="ADN">YEMEN (SUD)</option><option value="YU">YOUGOSLAVIE</option><option value="CB">ZAIRE</option><option value="NR">ZAMBIE</option><option value="SR">ZIMBABWE</option>
+								    </select>
+							    </div>
+							    
+							    <div class="form-group">
+							        <label for="field_mineur">Mineur</label>
+							        <div>
+								        <label class="radio-inline"><input type="radio" class="mineur" name="mineur" id="field_mineur_o" value="oui">oui</label>
+										<label class="radio-inline"><input type="radio" class="mineur" name="mineur" id="field_mineur_n" value="non">non</label>
+							        </div>
+							    </div>
+							    <div id="group-represent" style="display: none;">
+								    <div class="form-group">
+								        <label for="field_representLastName">Nom du représentant légal</label>
+								        <input type="text" class="form-control" name="representLastName" id="field_representLastName">
+								    </div>
+								    <div class="form-group">
+								        <label for="field_representFirstName">Prénom du représentant légal</label>
+								        <input type="text" class="form-control" name="representFirstName" id="field_representFirstName">
+								    </div>
+								    <div class="form-group">
+								        <label for="field_representMoral">Personne morale</label>
+								        <div>
+									        <label class="radio-inline"><input type="radio" class="representMoral" name="representMoral" id="field_representMoral_o" value="oui">oui</label>
+											<label class="radio-inline"><input type="radio" class="representMoral" name="representMoral" id="field_representMoral_n" value="non">non</label>
+								        </div>
+								    </div>
+								    <div class="form-group" id="group-representDesignation" style="display: none;">
+								        <label for="field_representDesignation">Désignation de la personne morale</label>
+								        <input type="text" class="form-control" name="representDesignation" id="field_representDesignation">
+								    </div>
+							    </div>
+							</div>
+							<br>
+			            	<div class="row underline">
+	            				<h4>Adresse</h4>
+	            			</div>
+			            	<br>
+			            	<div class="row row-form">
+							    <div class="form-group">
+							        <label for="field_addressOwner">Chez</label>
+							        <input type="text" class="form-control" name="addressOwner" id="field_addressOwner">
+							    </div>
+							    <div class="form-group">
+							        <label for="field_addressStreet">Numéro / Voie</label>
+							        <input type="text" class="form-control" name="addressStreet" id="field_addressStreet">
+							    </div>
+							    <div class="form-group">
+							        <label for="field_addressCity">Code postal / Ville</label>
+							        <input type="text" class="form-control" name=addressCity id="field_addressCity">
+							    </div>
+							    <div class="form-group">
+							        <label for="field_addressComplement">Complément</label>
+							        <input type="text" class="form-control" name="addressComplement" id="field_addressComplement">
+							    </div>
+							</div>
+							<br>
+			            	<div class="row underline">
+	            				<h4>Délivrance</h4>
+	            			</div>
+			            	<br>
+			            	<div class="row row-form">
+							    <div class="form-group">
+							        <label for="field_deliveryBy">Délivré par</label>
+							        <input type="text" class="form-control" name="deliveryBy" id="field_deliveryBy">
+							    </div>
+							    <div class="form-group">
+							        <label for="field_deliveryDate">Date de délivrance</label>
+							        <input type="date" class="form-control" name="deliveryDate" id="field_deliveryDate">
+							    </div>
+							    <div class="form-group">
+							        <label for="field_validityDate">Date de fin de validité</label>
+							        <input type="date" class="form-control" name="validityDate" id="field_validityDate" disabled="disabled">
+							    </div>
+							    <div class="form-group">
+							        <label for="field_firstDeliveryDate">Date de premier enregistrement en guichet unique</label>
+							        <input type="date" class="form-control" name="firstDeliveryDate" id="field_firstDeliveryDate">
+							    </div>
+							    <div class="form-group">
+							        <label for="field_status">Statut</label>
+							        <select class="form-control" name="status" id="field_status" >
+							        	<option label=" "></option>
+							        	<option value="Première délivrance">Première délivrance</option>
+							        	<option value="Premier renouvellement">Premier renouvellement</option>
+							        	<option value="Deuxième renouvellement">Deuxième renouvellement</option>
+							        </select>
+							    </div>
+							    <br>
+							    <div style="text-align: center;">
+							    	<button onclick="javascript:generatePdf()" class="btn btn-primary">Générer le PDF</button>
+							    </div>
+			            	</div>
+			            </div>
 		            </div>
 	            </div>
             </div>
