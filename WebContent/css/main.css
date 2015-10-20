@@ -4,9 +4,16 @@
 	margin-left: 10px;
 }
 
+.help-block {
+	color: red;
+	font-style: italic;
+	font-size: 13px;
+}
+
 .btn { 
 	width: 240px;
 }  
+
 .hidden {
 	display:none;
 }

@@ -37,8 +37,16 @@
             			<br>
             			<div class="row row-form" id="form-photo" style="display: none;">
             				<div class="form-group">
-						        <label for="field_agdrefId">Numéro d'étranger AGDREF</label>
+						        <label for="field_agdrefId">Numéro d'étranger AGDREF *</label>
 						        <input type="text" class="form-control" name="agdrefId" id="field_agdrefId">
+						        <div>
+						            <p id="agdrefIdEmpty" class="help-block hidden">
+						                Le numéro d'étranger AGDREF est obligatoire.
+						            </p>
+						            <p id="agdrefIdDirty" class="help-block hidden">
+						                Le numéro doit se composer de 10 caractères.
+						            </p>
+			        			</div>
 						    </div>
 						</div>
             			<div class="row row-form">
@@ -55,12 +63,17 @@
 							        </div>
 							    </div>
 							    <div class="finalImageBox hidden">
-									<img id="theimg" src="" />
+									<img id="theimg" />
 									<div id="theimgbtn" class="picedit_video_controls final_image_controls">
 										<span id="btnImgSave" class="picedit_control picedit_action glyphicon glyphicon-save"></span>
 										<span id="btnImgCancel" class="picedit_control picedit_action ico-picedit-close"></span>
 								    </div>
 							    </div>
+						        <div style="text-align: left;">
+						            <p id="photoEmpty" class="help-block hidden">
+						                La photo est obligatoire.
+						            </p>
+			        			</div>
 				            	<div class="infoBox hidden">
 				            		
 				            	</div>
@@ -74,13 +87,18 @@
 	            			<br>
 			            	<div class="row row-form">
 		            			<div class="form-group">
-							        <label for="field_type">Type de procédure</label>
+							        <label for="field_type">Type de procédure *</label>
 							        <select class="form-control" name="type" id="field_type" >
 							        	<option label=" "></option>
 							        	<option value="Dublin">Dublin</option>
 							        	<option value="Normale">Normale</option>
 							        	<option value="Accélérée">Accélérée</option>
 							        </select>
+								        <div>
+							            <p id="typeEmpty" class="help-block hidden">
+							                Le type de procédure est obligatoire.
+							            </p>
+				        			</div>
 							    </div>
 							</div>
 			            	<br>
@@ -90,30 +108,53 @@
 			            	<br>
 			            	<div class="row row-form">
 		            			<div class="form-group">
-							        <label for="field_id">Identifiant</label>
+							        <label for="field_id">Identifiant *</label>
 							        <input type="text" class="form-control" name="lastId" id="field_id">
+							        <div>
+							            <p id="idEmpty" class="help-block hidden">
+							                L'identifiant est obligatoire.
+							            </p>
+							            <p id="idDirty" class="help-block hidden">
+							                L'identifiant doit se composer de 10 caractères.
+							            </p>
+				        			</div>
 							    </div>
 		            			<div class="form-group">
-							        <label for="field_lastName">Nom</label>
+							        <label for="field_lastName">Nom *</label>
 							        <input type="text" class="form-control" name="lastName" id="field_lastName">
+							        <div>
+							            <p id="lastNameEmpty" class="help-block hidden">
+							                Le nom est obligatoire.
+							            </p>
+				        			</div>
 							    </div>
 							    <div class="form-group">
 							        <label for="field_usedLastName">Nom d'usage</label>
 							        <input type="text" class="form-control" name="usedLastName" id="field_usedLastName">
 							    </div>
 							    <div class="form-group">
-							        <label for="field_firstName">Prénom(s)</label>
+							        <label for="field_firstName">Prénom(s) * (si plusieurs, séparez-les par des virgules)</label>
 							        <input type="text" class="form-control" name="firstName" id="field_firstName">
+							        <div>
+							            <p id="firstNameEmpty" class="help-block hidden">
+							                Le prénom est obligatoire.
+							            </p>
+				        			</div>
 							    </div>
 							    <div class="form-group">
-							        <label for="field_sex">Sexe</label>
+							        <label for="field_sex">Sexe *</label>
 							        <div>
 								        <label class="radio-inline"><input type="radio" name="sex" id="field_sex_f" value="Féminin">Féminin</label>
 										<label class="radio-inline"><input type="radio" name="sex" id="field_sex_m" value="Masculin">Masculin</label>
+								        <div>
+								            <p id="sexEmpty" class="help-block hidden">
+								                Le sexe est obligatoire.
+								            </p>
+					        			</div>
 					                </div>
 							    </div>
 							    <div class="form-group">
-							        <label for="field_situation">Situation familiale</label>
+							        <label for="field_situation">Situation familiale *</label>
 							        <select class="form-control" name="situation" id="field_situation" >
 							        	<option label=" "></option>
 							        	<option value="Célibataire">Célibataire</option>
@@ -124,48 +165,93 @@
 							        	<option value="Divorcé(e)">Divorcé(e)</option>
 							        	<option value="Veuf(ve)">Veuf(ve)</option>
 							        </select>
+							        <div>
+							            <p id="situationEmpty" class="help-block hidden">
+							                La situation familiale est obligatoire.
+							            </p>
+				        			</div>
 							    </div>
 							    <div class="form-group">
-							        <label for="field_birthDate">Date de naissace</label>
+							        <label for="field_birthDate">Date de naissance *</label>
 							        <input type="date" class="form-control" name="birthDate" id="field_birthDate">
+							        <div>
+							            <p id="birthDateEmpty" class="help-block hidden">
+							                La date de naissance est obligatoire.
+							            </p>
+				        			</div>
 							    </div>
 							    <div class="form-group">
-							        <label for="field_birthCity">Ville de naissance</label>
+							        <label for="field_birthCity">Ville de naissance *</label>
 							        <input type="text" class="form-control" name="birthCity" id="field_birthCity">
+							        <div>
+							            <p id="birthCityEmpty" class="help-block hidden">
+							                La ville de naissance est obligatoire.
+							            </p>
+				        			</div>
 							    </div>
 							    <div class="form-group">
-							        <label for="field_birthCountry">Pays de naissance</label>
+							        <label for="field_birthCountry">Pays de naissance *</label>
 							        <select class="form-control" name="birthCountry" id="field_birthCountry">
 								    	<option label=" "></option><option value="ZZZ">INDETERMINE</option><option value="AFG">AFGHANISTAN</option><option value="ZA">AFRIQUE DU SUD</option><option value="AL">ALBANIE</option><option value="DZ">ALGERIE</option><option value="D">ALLEMAGNE</option><option value="ZDA">ALLEMAGNE</option><option value="RDA">ALLEMAGNE DE L'EST (RDA)</option><option value="AND">ANDORRE</option><option value="PAN">ANGOLA</option><option value="GBI">ANGUILLA</option><option value="ZAN">ANTIGUA ET BARBUDA</option><option value="NA">ANTILLES NEERLANDAISES</option><option value="APA">APATRIDE</option><option value="ARS">ARABIE SAOUDITE</option><option value="RA">ARGENTINE</option><option value="ZAR">ARMENIE</option><option value="ZAC">ASSYRO CHALDEE</option><option value="AUS">AUSTRALIE</option><option value="A">AUTRICHE</option><option value="AZE">AZERBAIDJAN</option><option value="BS">BAHAMAS</option><option value="BH">BAHREIN</option><option value="BD">BANGLADESH</option><option value="BDS">BARBADE</option><option value="B">BELGIQUE</option><option value="ZBE">BELIZE</option><option value="BGL">BENGALE</option><option value="DY">BENIN</option><option value="GBB">BERMUDES</option><option value="BOU">BHOUTAN</option><option value="ZBR">BIELORUSSIE</option><option value="BUR">BIRMANIE</option><option value="BUR">BIRMANIE</option><option value="BO">BOLIVIE</option><option value="BOS">BOSNIE-HERZEGOVINE</option><option value="BP">BOTSWANA</option><option value="BR">BRESIL</option><option value="BRU">BRUNEI</option><option value="BG">BULGARIE</option><option value="HV">BURKINA</option><option value="OUR">BURUNDI</option><option value="K">CAMBODGE</option><option value="TC">CAMEROUN</option><option value="CDN">CANADA</option><option value="CV">CAP VERT</option><option value="RCA">CENTRAFRIQUE</option><option value="ZCL">CEYLAN</option><option value="RCH">CHILI</option><option value="CY">CHYPRE</option><option value="CO">COLOMBIE</option><option value="KM">COMORES</option><option value="RCB">CONGO</option><option value="COR">COREE DU NORD</option><option value="SCO">COREE DU SUD</option><option value="CR">COSTA RICA</option><option value="CI">COTE D'IVOIRE</option><option value="CRO">CROATIE</option><option value="C">CUBA</option><option value="DK">DANEMARK</option><option value="DJ">DJIBOUTI</option><option value="ET">EGYPTE</option><option value="SAL">EL SALVADOR</option><option value="AE">EMIRATS ARABES UNIS</option><option value="EC">EQUATEUR</option><option value="ZRY">ERYTHREE</option><option value="E">ESPAGNE</option><option value="ZES">ESTONIE</option><option value="USA">ETATS UNIS</option><option value="ETH">ETHIOPIE</option><option value="FJ">FIDJI</option><option value="SF">FINLANDE</option><option value="F">FRANCE</option><option value="GA">GABON</option><option value="WAG">GAMBIE</option><option value="ZGE">GEORGIE</option><option value="GH">GHANA</option><option value="GBZ">GIBRALTAR</option><option value="GB">GRANDE BRETAGNE</option><option value="GR">GRECE</option><option value="WG">GRENADE</option><option value="DKG">GROENLAND</option><option value="GCA">GUATEMALA</option><option value="GBG">GUERNESEY</option><option value="GU">GUINEE</option><option value="GQ">GUINEE EQUATORIALE</option><option value="GW">GUINEE-BISSAO</option><option value="GY">GUYANA</option><option value="RH">HAITI</option><option value="HO">HONDURAS</option><option value="GBK">HONG KONG</option><option value="H">HONGRIE</option><option value="GBF">ILES MALOUINES</option><option value="MAR">ILES MARSHALL</option><option value="IND">INDE</option><option value="RI">INDONESIE</option><option value="IRQ">IRAK</option><option value="IR">IRAN</option><option value="EIR">IRLANDE</option><option value="IS">ISLANDE</option><option value="IL">ISRAEL</option><option value="I">ITALIE</option><option value="JA">JAMAIQUE</option><option value="J">JAPON</option><option value="GBJ">JERSEY</option><option value="JOR">JORDANIE</option><option value="KAZ">KAZAKHSTAN</option><option value="EAK">KENYA</option><option value="KIR">KIRGHIZIE</option><option value="ZKR">KIRIBATI</option><option value="KO">KOWEIT</option><option value="ZKU">KURDISTAN</option><option value="DM">LA DOMINIQUE</option><option value="LAO">LAOS</option><option value="PB">LESOTHO</option><option value="ZLE">LETTONIE</option><option value="LIB">LIBAN</option><option value="LBA">LIBERIA</option><option value="LT">LIBYE</option><option value="FL">LIECHTENSTEIN</option><option value="ZLI">LITUANIE</option><option value="L">LUXEMBOURG</option><option value="RM">MADAGASCAR</option><option value="PTM">MALAISIE</option><option value="NP">MALAWI</option><option value="MV">MALDIVES</option><option value="MLI">MALI</option><option value="GBY">MALTE</option><option value="GAM">MAN (ILE)</option><option value="MA">MAROC</option><option value="MS">MAURICE</option><option value="RIM">MAURITANIE</option><option value="MEX">MEXIQUE</option><option value="MIC">MICRONESIE</option><option value="MOL">MOLDAVIE</option><option value="MC">MONACO</option><option value="MN">MONGOLIE</option><option value="ME">MONTENEGRO</option><option value="PM">MOZAMBIQUE</option><option value="ZNA">NAMIBIE</option><option value="ZNU">NAURU</option><option value="NE">NEPAL</option><option value="NIC">NICARAGUA</option><option value="NIG">NIGER</option><option value="WAN">NIGERIA</option><option value="N">NORVEGE</option><option value="NZ">NOUVELLE ZELANDE</option><option value="OM">OMAN</option><option value="EAU">OUGANDA</option><option value="OUZ">OUZBEKISTAN</option><option value="PAK">PAKISTAN</option><option value="ZPA">PALESTINE</option><option value="PA">PANAMA</option><option value="PG">PAPOUASIE</option><option value="PAY">PARAGUAY</option><option value="NL">PAYS BAS</option><option value="PE">PEROU</option><option value="PI">PHILIPPINES</option><option value="PL">POLOGNE</option><option value="PR">PORTO RICO</option><option value="P">PORTUGAL</option><option value="Q">QATAR</option><option value="RMA">REPUBLIQUE DE MACEDOINE</option><option value="PLW">REPUBLIQUE DE PALAU</option><option value="RDC">REPUBLIQUE DEMO. DU CONGO</option><option value="DOM">REPUBLIQUE DOMINICAINE</option><option value="RKS">REPUBLIQUE DU KOSOVO</option><option value="RPC">REPUBLIQUE POPULAIRE DE CHINE</option><option value="RTC">REPUBLIQUE TCHEQUE</option><option value="R">ROUMANIE</option><option value="ZRU">RUSSIE</option><option value="RU">RWANDA</option><option value="SAH">SAHRAOUIE</option><option value="ZNV">SAINT CHRISTOPHE ET NIEVES</option><option value="RSM">SAINT MARIN</option><option value="ST">SAINT THOMAS ET PRINCE</option><option value="WV">SAINT VINCENT</option><option value="V">SAINT-SIEGE</option><option value="WL">SAINTE LUCIE</option><option value="SL">SALOMON</option><option value="WS">SAMOA OCCIDENTALES</option><option value="SA">SARRE</option><option value="SN">SENEGAL</option><option value="RS">SERBIE</option><option value="SB">SERBIE-ET-MONTENEGRO</option><option value="SKO">SERBIE-ET-MONTENEGRO/KOSOVO</option><option value="SY">SEYCHELLES</option><option value="WAL">SIERRA LEONE</option><option value="SGP">SINGAPOUR</option><option value="SVQ">SLOVAQUIE</option><option value="SLO">SLOVENIE</option><option value="SP">SOMALIE</option><option value="SAE">SOUDAN</option><option value="SSD">SOUDAN DU SUD</option><option value="CL">SRI LANKA</option><option value="ZCN">ST CHRISTOPHE ET NIEVES</option><option value="ZKI">ST KITTS</option><option value="S">SUEDE</option><option value="CH">SUISSE</option><option value="SME">SURINAME</option><option value="SD">SWAZILAND</option><option value="SYR">SYRIE</option><option value="TAD">TADJIKISTAN</option><option value="TW">TAIWAN</option><option value="EAT">TANZANIE</option><option value="TCH">TCHAD</option><option value="CS">TCHECOSLOVAQUIE</option><option value="T">THAILANDE</option><option value="ZTI">TIBET</option><option value="TMP">TIMOR ORIENTAL</option><option value="TT">TOGO</option><option value="TO">TONGA</option><option value="TD">TRINITE ET TOBAGO</option><option value="TU">TUNISIE</option><option value="TUR">TURKMENISTAN</option><option value="TR">TURQUIE</option><option value="ZTU">TUVALU</option><option value="ZUK">UKRAINE</option><option value="SU">URSS</option><option value="U">URUGUAY</option><option value="ZVA">VANUATU</option><option value="YV">VENEZUELA</option><option value="VN">VIETNAM</option><option value="YEM">YEMEN</option><option value="Y">YEMEN (NORD)</option><option value="ADN">YEMEN (SUD)</option><option value="YU">YOUGOSLAVIE</option><option value="CB">ZAIRE</option><option value="NR">ZAMBIE</option><option value="SR">ZIMBABWE</option>
 								    </select>
+							        <div>
+							            <p id="birthCountryEmpty" class="help-block hidden">
+							                Le pays de naissance est obligatoire.
+							            </p>
+				        			</div>
 							    </div>
 							    
 							    <div class="form-group">
-							        <label for="field_mineur">Mineur</label>
+							        <label for="field_mineur">Mineur *</label>
 							        <div>
 								        <label class="radio-inline"><input type="radio" class="mineur" name="mineur" id="field_mineur_o" value="oui">oui</label>
 										<label class="radio-inline"><input type="radio" class="mineur" name="mineur" id="field_mineur_n" value="non">non</label>
+								        <div>
+								            <p id="mineurEmpty" class="help-block hidden">
+								                Le champ mineur est obligatoire.
+								            </p>
+					        			</div>
 							        </div>
 							    </div>
 							    <div id="group-represent" style="display: none;">
 								    <div class="form-group">
-								        <label for="field_representLastName">Nom du représentant légal</label>
+								        <label for="field_representLastName">Nom du représentant légal *</label>
 								        <input type="text" class="form-control" name="representLastName" id="field_representLastName">
+								        <div>
+								            <p id="representLastNameEmpty" class="help-block hidden">
+								                Le nom du représentant légal est obligatoire.
+								            </p>
+					        			</div>
 								    </div>
 								    <div class="form-group">
-								        <label for="field_representFirstName">Prénom du représentant légal</label>
+								        <label for="field_representFirstName">Prénom du représentant légal *</label>
 								        <input type="text" class="form-control" name="representFirstName" id="field_representFirstName">
+								        <div>
+								            <p id="representFirstNameEmpty" class="help-block hidden">
+								                Le prénom du représentant légal est obligatoire.
+								            </p>
+					        			</div>
 								    </div>
 								    <div class="form-group">
-								        <label for="field_representMoral">Personne morale</label>
+								        <label for="field_representMoral">Personne morale *</label>
 								        <div>
 									        <label class="radio-inline"><input type="radio" class="representMoral" name="representMoral" id="field_representMoral_o" value="oui">oui</label>
 											<label class="radio-inline"><input type="radio" class="representMoral" name="representMoral" id="field_representMoral_n" value="non">non</label>
+									        <div>
+									            <p id="representMoralEmpty" class="help-block hidden">
+									                Le champ personne morale est obligatoire.
+									            </p>
+						        			</div>
 								        </div>
 								    </div>
 								    <div class="form-group" id="group-representDesignation" style="display: none;">
 								        <label for="field_representDesignation">Désignation de la personne morale</label>
 								        <input type="text" class="form-control" name="representDesignation" id="field_representDesignation">
+								        <div>
+								            <p id="representDesignationEmpty" class="help-block hidden">
+								                La désignation de la personne morale est obligatoire.
+								            </p>
+					        			</div>
 								    </div>
 							    </div>
 							</div>
@@ -199,29 +285,49 @@
 			            	<br>
 			            	<div class="row row-form">
 							    <div class="form-group">
-							        <label for="field_deliveryBy">Délivré par</label>
+							        <label for="field_deliveryBy">Délivré par *</label>
 							        <input type="text" class="form-control" name="deliveryBy" id="field_deliveryBy">
+							        <div>
+							            <p id="deliveryByEmpty" class="help-block hidden">
+							                L'établissement de délivrance est obligatoire.
+							            </p>
+				        			</div>
 							    </div>
 							    <div class="form-group">
-							        <label for="field_deliveryDate">Date de délivrance</label>
+							        <label for="field_deliveryDate">Date de délivrance *</label>
 							        <input type="date" class="form-control" name="deliveryDate" id="field_deliveryDate">
+							        <div>
+							            <p id="deliveryDateEmpty" class="help-block hidden">
+							                La date de délivrance est obligatoire.
+							            </p>
+				        			</div>
 							    </div>
 							    <div class="form-group">
 							        <label for="field_validityDate">Date de fin de validité</label>
 							        <input type="date" class="form-control" name="validityDate" id="field_validityDate" disabled="disabled">
 							    </div>
 							    <div class="form-group">
-							        <label for="field_firstDeliveryDate">Date de premier enregistrement en guichet unique</label>
+							        <label for="field_firstDeliveryDate">Date de premier enregistrement en guichet unique *</label>
 							        <input type="date" class="form-control" name="firstDeliveryDate" id="field_firstDeliveryDate">
+							        <div>
+							            <p id="firstDeliveryDateEmpty" class="help-block hidden">
+							                La date de premier enregistrement en guichet unique est obligatoire.
+							            </p>
+				        			</div>
 							    </div>
 							    <div class="form-group">
-							        <label for="field_status">Statut</label>
+							        <label for="field_status">Statut *</label>
 							        <select class="form-control" name="status" id="field_status" >
 							        	<option label=" "></option>
 							        	<option value="Première délivrance">Première délivrance</option>
 							        	<option value="Premier renouvellement">Premier renouvellement</option>
 							        	<option value="Deuxième renouvellement">Deuxième renouvellement</option>
 							        </select>
+							        <div>
+							            <p id="statusEmpty" class="help-block hidden">
+							                Le statut est obligatoire.
+							            </p>
+				        			</div>
 							    </div>
 							    <br>
 							    <div style="text-align: center;">

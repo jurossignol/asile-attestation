@@ -52,17 +52,19 @@ $('#btnCrop').on('click', function(){
 });
 
 $('#btnImgCancel').on('click', function(){
-	$("#theimg").attr("src", '');
+	$("#theimg").removeAttr("src");
 	$('.finalImageBox').addClass("hidden");
 	$('.infoBox').addClass("hidden");
 	$('.imageBox').removeClass("hidden");
 });
 
 $('#btnImgSave').on('click', function(){
+	$("#agdrefIdEmpty").addClass("hidden");
+	$("#agdrefIdDirty").addClass("hidden");
 	if($("#field_agdrefId").val() === ''){
-		alert("Merci de préciser un numéro d'étranger AGDREF");
+		$("#agdrefIdEmpty").removeClass("hidden");
 	} else if($("#field_agdrefId").val().length != 10) {
-		alert("Le numéro d'étranger AGDREF doit contenir 10 caractères");
+		$("#agdrefIdDirty").removeClass("hidden");
 	} else {
 		var photoLink = document.createElement('a');
 		photoLink.href = $("#theimg").attr("src");
@@ -180,7 +182,102 @@ function initForm() {
 }
 
 
+/** c'est moche mais ça fait le job **/
+function validateForm() {
+	var isFormValid = true;
+	$('.help-block').each(function() {
+	    $(this).addClass("hidden");
+	});
+	if($('#theimg').prop('src') == '') {
+		$("#photoEmpty").removeClass("hidden");
+		isFormValid = false;
+	}
+	if($("#field_type").val() == '') {
+		$("#typeEmpty").removeClass("hidden");
+		isFormValid = false;
+	}
+	if($("#field_id").val() === ''){
+		$("#idEmpty").removeClass("hidden");
+		isFormValid = false;
+	} else if($("#field_id").val().length != 10) {
+		$("#idDirty").removeClass("hidden");
+		isFormValid = false;
+	}
+	if($("#field_lastName").val() == '') {
+		$("#lastNameEmpty").removeClass("hidden");
+		isFormValid = false;
+	}
+	if($("#field_firstName").val() == '') {
+		$("#firstNameEmpty").removeClass("hidden");
+		isFormValid = false;
+	}
+	if(!$("#field_sex_f").prop("checked") && !$("#field_sex_m").prop("checked")) {
+		$("#sexEmpty").removeClass("hidden");
+		isFormValid = false;
+	}
+	if($("#field_situation").val() == '') {
+		$("#situationEmpty").removeClass("hidden");
+		isFormValid = false;
+	}
+	if($("#field_birthDate").val() == '') {
+		$("#birthDateEmpty").removeClass("hidden");
+		isFormValid = false;
+	}
+	if($("#field_birthCity").val() == '') {
+		$("#birthCityEmpty").removeClass("hidden");
+		isFormValid = false;
+	}
+	if($("#field_birthCountry").val() == '') {
+		$("#birthCountryEmpty").removeClass("hidden");
+		isFormValid = false;
+	}
+	if(!$("#field_mineur_o").prop("checked") && !$("#field_mineur_n").prop("checked")) {
+		$("#mineurEmpty").removeClass("hidden");
+		isFormValid = false;
+	}
+	if($("#field_mineur_o").prop("checked") && $("#field_representLastName").val() == '') {
+		$("#representLastNameEmpty").removeClass("hidden");
+		isFormValid = false;
+	}
+	if($("#field_mineur_o").prop("checked") && $("#field_representFirstName").val() == '') {
+		$("#representFirstNameEmpty").removeClass("hidden");
+		isFormValid = false;
+	}
+	if($("#field_mineur_o").prop("checked") && !$("#field_representMoral_o").prop("checked") && !$("#field_representMoral_n").prop("checked")) {
+		$("#representMoralEmpty").removeClass("hidden");
+		isFormValid = false;
+	}
+	if($("#field_representMoral_o").prop("checked") && $("#field_representDesignation").val() == '') {
+		$("#representDesignationEmpty").removeClass("hidden");
+		isFormValid = false;
+	}
+	if($("#field_deliveryBy").val() == '') {
+		$("#deliveryByEmpty").removeClass("hidden");
+		isFormValid = false;
+	}
+	if($("#field_deliveryDate").val() == '') {
+		$("#deliveryDateEmpty").removeClass("hidden");
+		isFormValid = false;
+	}
+	if($("#field_firstDeliveryDate").val() == '') {
+		$("#firstDeliveryDateEmpty").removeClass("hidden");
+		isFormValid = false;
+	}
+	if($("#field_status").val() == '') {
+		$("#statusEmpty").removeClass("hidden");
+		isFormValid = false;
+	}
+	return isFormValid;
+}
+
+
 function generatePdf() {
+	var isFormValid = validateForm();
+	
+	if(!isFormValid) {
+		return;
+	}
+	
 	var pdf = new jsPDF('p', 'cm', 'a4');
 	pdf.setFillColor(0);
 
@@ -188,7 +285,7 @@ function generatePdf() {
 	pdf.setFontType("bold");
 	
 	// PHOTO
-	pdf.addImage($('#theimg').prop('src'), 'JPEG', 15.1, 5.7, 2.9, 3.4);
+	pdf.addImage($('#theimg').prop('src'), 'JPEG', 15.2, 5.8, 2.9, 3.4);
 	
 	// TITRE
 	pdf.text("ATTESTATION DE DEMANDE D'ASILE", 10.5, 10.1, 'center');
