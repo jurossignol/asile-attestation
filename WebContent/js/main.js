@@ -61,6 +61,8 @@ $('#btnImgCancel').on('click', function(){
 $('#btnImgSave').on('click', function(){
 	if($("#field_agdrefId").val() === ''){
 		alert("Merci de préciser un numéro d'étranger AGDREF");
+	} else if($("#field_agdrefId").val().length != 10) {
+		alert("Le numéro d'étranger AGDREF doit contenir 10 caractères");
 	} else {
 		var photoLink = document.createElement('a');
 		photoLink.href = $("#theimg").attr("src");
