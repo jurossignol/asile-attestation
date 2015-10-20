@@ -288,15 +288,21 @@ function generatePdf() {
 	pdf.addImage($('#theimg').prop('src'), 'JPEG', 15.2, 5.8, 2.9, 3.4);
 	
 	// TITRE
-	pdf.text("ATTESTATION DE DEMANDE D'ASILE", 10.5, 10.1, 'center');
-	pdf.text("PROCEDURE " + $("#field_type").val().toUpperCase(), 10.5, 10.6, 'center');
+	pdf.text("ATTESTATION DE DEMANDE D'ASILE", 6, 10.1);
+	var xType = 7.6;
+	if($("#field_type").val() === 'Dublin') {
+		xType = 7.7;
+	} else if($("#field_type").val() === 'Accélérée') {
+		xType = 7.5;
+	}
+	pdf.text("PROCEDURE " + $("#field_type").val().toUpperCase(), xType, 10.6);
 	
 	pdf.setFontSize(11);
 	pdf.setFontType("normal");
 	
 	// SIGNATURE
-	pdf.text("Signature du titulaire", 18, 12.8, 'right');
-	pdf.text("Cachet et signature de l'autorité", 18, 23.5, 'right');
+	pdf.text("Signature du titulaire", 14.7, 12.8);
+	pdf.text("Cachet et signature de l'autorité", 13.1, 23.5);
 	
 	// IDENTITE
 	pdf.text("Identifiant : " + $("#field_id").val(), 2, 11.5);
