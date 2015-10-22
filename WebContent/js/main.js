@@ -66,8 +66,17 @@ $('#btnImgSave').on('click', function(){
 	} else if($("#field_agdrefId").val().length != 10) {
 		$("#agdrefIdDirty").removeClass("hidden");
 	} else {
+		var imgTmp = document.createElement("img");
+		imgTmp.src = $("#theimg").attr("src");
+		var canvasTmp = document.createElement("canvas");
+		canvasTmp.width = 105;
+        canvasTmp.height = 122;
+        var ctxTmp = canvasTmp.getContext("2d");
+        ctxTmp.drawImage(imgTmp, 0, 0, 105, 122);
+        var dataurltmp = canvasTmp.toDataURL("image/png"); 
+        
 		var photoLink = document.createElement('a');
-		photoLink.href = $("#theimg").attr("src");
+		photoLink.href = dataurltmp;
 		photoLink.download = $("#field_agdrefId").val() + ".jpeg";
 		photoLink.click();
 	}
