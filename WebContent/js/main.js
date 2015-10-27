@@ -75,10 +75,14 @@ $('#btnImgSave').on('click', function(){
         ctxTmp.drawImage(imgTmp, 0, 0, 105, 122);
         var dataurltmp = canvasTmp.toDataURL("image/png"); 
         
-		var photoLink = document.createElement('a');
-		photoLink.href = dataurltmp;
-		photoLink.download = $("#field_agdrefId").val() + ".jpeg";
-		photoLink.click();
+        $("#finalImageLink").attr("href", dataurltmp);
+        $("#finalImageLink").attr("download", $("#field_agdrefId").val() + ".jpeg");
+        $("#finalImageLink")[0].click();
+        
+//		var photoLink = document.createElement('a');
+//		photoLink.href = dataurltmp;
+//		photoLink.download = $("#field_agdrefId").val() + ".jpeg";
+//		photoLink.click();
 	}
 });
 
